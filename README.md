@@ -11,5 +11,4 @@ make posts, edit posts and comment on other users posts.
 * Sequelize (npm package for integrating MySQL and Node.js)
 * bcrypt (npm package for password hashing)
 * handlebars (npm package for a template engine used for html and javascript integration on the front-end)
-* Heroku (hosting platform)
-  * JawsDB (a Heroku add-on for hosting the MySQL databas
+
