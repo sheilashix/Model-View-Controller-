@@ -1,5 +1,4 @@
 // Server for MVC Tech Blog
-
 // Dependencies
 // path module
 const path = require('path');
