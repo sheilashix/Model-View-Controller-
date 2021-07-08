@@ -25,5 +25,5 @@
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js"
   },
-  "author": "Sheila Chepkemoi",
+  "author": "Sheila Chepkemoi"
 }
