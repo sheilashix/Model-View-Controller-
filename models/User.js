@@ -5,10 +5,8 @@ const sequelize = require('../config/connection');
 // use bcrypt for password hashing
 const bcrypt = require('bcrypt');
 
-// create the User model
 class User extends Model {
-    // set up a method to run on a user instance to check the password as provided 
-    // in the login route against the hashed database password
+
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
@@ -17,8 +15,6 @@ class User extends Model {
 // define the table columns and configuration
 User.init(
   {
-    // TABLE COLUMN DEFINITIONS
-    // define an id column
     id: {
         // use the special Sequelize DataTypes object to define what type of data it is
         type: DataTypes.INTEGER,
@@ -59,7 +55,7 @@ User.init(
         // require the data to be entered
         allowNull: false,
         validate: {
-            // this means the password must be at least four characters long
+            //  the password must be at least four characters long
             len: [4]
             }
         }
