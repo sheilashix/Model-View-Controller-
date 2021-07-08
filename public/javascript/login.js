@@ -1,12 +1,9 @@
-// Login form handler
 async function loginFormHandler(event) {
     event.preventDefault();
-
     // get the information from the login form
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
-    // if both fields have content
     if (email && password) {
         // POST to the login route with the user information
         const response = await fetch('/api/users/login', {
