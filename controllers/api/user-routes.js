@@ -73,7 +73,6 @@ router.get('/:id', (req, res) => {
 // POST /api/users -- add a new user
 router.post('/', (req, res) => {
   // create method
-  // expects an object in the form {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -98,8 +97,6 @@ router.post('/', (req, res) => {
 
 // POST /api/users/login -- login route for a user
 router.post('/login',  (req, res) => {
-    // findOne method by email to look for an existing user in the database with the email address entered
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
     User.findOne({
         where: {
         email: req.body.email
@@ -133,9 +130,7 @@ router.post('/login',  (req, res) => {
 // POST /api/users/logout -- log out an existing user
 router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      // 204 status is that a request has succeeded, but client does not need to go to a different page
-        // (200 indicates success and that a newly updated page should be loaded, 201 is for a resource being created)
+req.session.destroy(() ={
       res.status(204).end();
     });
   } else {
@@ -146,12 +141,6 @@ router.post('/logout', withAuth, (req, res) => {
 
 // PUT /api/users/1 -- update an existing user
 router.put('/:id', withAuth, (req, res) => {
-    // update method
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  
-    // if req.body has exact key/value pairs to match the model, 
-    // you can just use `req.body` instead of calling out each property,
-    // allowing for updating only key/value pairs that are passed through
     User.update(req.body, {
         // since there is a hook to hash only the password, the option is noted here
         individualHooks: true,
